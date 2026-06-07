@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get a Quote | Maple Leaf Green Clean</title>
+    <meta name="description" content="Request a quote for premium, eco-friendly residential and commercial cleaning services.">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">
+                <img src="logo.png" alt="Maple Leaf Green Clean Logo" class="logo-img">
+            </a>
+            <div class="nav-links">
+                <a href="index.html#services">Services</a>
+                <a href="index.html#formula">Our Formula</a>
+                <a href="index.html#how-it-works">Process</a>
+                <a href="contact.html" class="btn-primary">Get a Quote</a>
+                <button id="themeToggle" class="theme-btn" aria-label="Toggle Dark Mode">
+                    <span class="icon-light">☼</span>
+                    <span class="icon-dark">☾</span>
+                </button>
+            </div>
+            <button class="hamburger" aria-label="Open Menu">
+                <span class="line"></span>
+                <span class="line"></span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="contact-page-header reveal">
+            <h1>Get a Free Quote</h1>
+            <p>Tell us about your home or business, and we'll provide a friendly, no-obligation estimate.</p>
+        </section>
+
+        <section class="form-section reveal" style="padding: 0 var(--space-md) var(--space-xl);">
+            <form class="quote-form" action="#" method="POST" onsubmit="event.preventDefault(); alert('Thank you! Your quote request has been sent.');">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Jane Doe">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="jane@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(604) 000-0000">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="service">Service Required</label>
+                    <select id="service" name="service" required>
+                        <option value="">Select a primary service...</option>
+                        <option value="residential">Residential Cleaning</option>
+                        <option value="commercial">Commercial Cleaning</option>
+                        <option value="organizing">Organizing & Decluttering</option>
+                        <option value="move">Move-In / Move-Out</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="details">Property Details & Specific Needs</label>
+                    <textarea id="details" name="details" rows="5" required placeholder="Approximate square footage, number of rooms, and any special eco-requirements..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary large submit-btn">Submit Request</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Maple Leaf Green Clean</h3>
+                <p>Safe, reliable, and eco-friendly cleaning services for your home and business.</p>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <p>hello@mapleleafgreenclean.com</p>
+                <p>Serving Metro Vancouver & Fraser Valley, BC</p>
+            </div>
+            <div class="footer-links">
+                <div class="link-group">
+                    <h4>Contact</h4>
+                    <a href="tel:6040000000">(604) 000-0000</a>
+                    <a href="mailto:hello@mapleleafgreenclean.com">hello@mapleleafgreenclean.com</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="year"></span> Maple Leaf Green Clean. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
