@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Online | Maple Leaf Green Clean</title>
+    <meta name="description" content="Book your eco-friendly cleaning service online. Choose your service, pick a date and time, and confirm your booking in minutes.">
+    <link rel="icon" type="image/png" href="mascot1.png">
+    <link rel="stylesheet" href="styles.css?v=2.9">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* ── Booking Page Styles ── */
+        .booking-header {
+            padding: 8rem var(--space-md) 0;
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .booking-header h1 {
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            font-size: clamp(3.5rem, 8vw, 6.5rem);
+            letter-spacing: -0.04em;
+            line-height: 1;
+        }
+
+        .booking-header p {
+            margin-bottom: 0;
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        /* Progress Steps */
+        .progress-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+            padding: 0 var(--space-md);
+        }
+
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            flex: 1;
+            position: relative;
+        }
+
+        .progress-step::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            width: 100%;
+            height: 2px;
+            background: var(--border-color);
+            z-index: 0;
+        }
+
+        .progress-step:last-child::after { display: none; }
+
+        .step-dot {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--border-color);
+            background: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            position: relative;
+            z-index: 1;
+            transition: all 0.4s ease;
+        }
+
+        .progress-step.active .step-dot {
+            background: var(--text-primary);
+            border-color: var(--text-primary);
+            color: var(--bg-primary);
+        }
+
+        .progress-step.done .step-dot {
+            background: var(--clr-forest-light);
+            border-color: var(--clr-forest-light);
+            color: white;
+        }
+
+        .progress-step.done::after {
+            background: var(--clr-forest-light);
+        }
+
+        .step-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-secondary);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .progress-step.active .step-label {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        /* Booking Container */
+        .booking-container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 var(--space-md) var(--space-xl);
+        }
+
+        /* Step Panels */
+        .booking-step {
+            display: none;
+            animation: fadeSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .booking-step.active { display: block; }
+
+        @keyframes fadeSlideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .step-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        /* Service Cards */
+        .service-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        @media (max-width: 600px) {
+            .service-options {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .service-option {
+            padding: 2rem;
+            border: 2px solid var(--border-color);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            background: var(--bg-secondary);
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-option:hover {
+            border-color: var(--clr-forest-light);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgb(0, 95, 37, 0.1);
+        }
+
+        .service-option.selected {
+            border-color: var(--text-primary);
+            background: var(--text-primary);
+            color: var(--bg-primary);
+        }
+
+        .service-option.selected .service-opt-desc {
+            opacity: 0.8;
+        }
+
+        .service-opt-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .service-opt-name {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-opt-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .service-option.selected .service-opt-desc {
+            color: var(--bg-secondary);
+        }
+
+        .service-check {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--clr-accent);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .service-option.selected .service-check { display: flex; }
+
+        /* Calendar */
+        .calendar-wrapper {
+            background: var(--bg-secondary);
+            border-radius: 24px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .cal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .cal-nav {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .cal-nav:hover {
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            border-color: var(--text-primary);
+        }
+
+        .cal-month-label {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .cal-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+        }
+
+        .cal-day-name {
+            text-align: center;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-secondary);
+            padding: 0.5rem 0;
+            font-weight: 700;
+        }
+
+        .cal-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+            font-weight: 500;
+        }
+
+        .cal-day:hover:not(.disabled):not(.empty) {
+            background: var(--border-color);
+            border-color: var(--clr-forest-light);
+        }
+
+        .cal-day.selected {
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            border-color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .cal-day.today {
+            border-color: var(--clr-accent);
+            color: var(--clr-accent);
+            font-weight: 700;
+        }
+
+        .cal-day.today.selected {
+            background: var(--text-primary);
+            color: var(--bg-primary);
+        }
+
+        .cal-day.disabled {
+            opacity: 0.25;
+            cursor: not-allowed;
+        }
+
+        .cal-day.empty { cursor: default; }
+
+        /* Time Slots */
+        .time-slots-label {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .time-slot {
+            padding: 0.8rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.25s ease;
+            background: var(--bg-secondary);
+        }
+
+        .time-slot:hover {
+            border-color: var(--clr-forest-light);
+            background: var(--bg-primary);
+        }
+
+        .time-slot.selected {
+            border-color: var(--text-primary);
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            font-weight: 700;
+        }
+
+        .time-slot.unavailable {
+            opacity: 0.3;
+            cursor: not-allowed;
+            text-decoration: line-through;
+        }
+
+        /* Confirm Summary */
+        .summary-box {
+            background: var(--bg-secondary);
+            border-radius: 24px;
+            padding: 2.5rem;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 1.05rem;
+        }
+
+        .summary-row:last-child { border-bottom: none; }
+
+        .summary-label {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .summary-value {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* Nav Buttons */
+        .booking-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            gap: 1rem;
+        }
+
+        .btn-back {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 1rem 2rem;
+            border-radius: 100px;
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            background: var(--bg-secondary);
+        }
+
+        .btn-next {
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            border: 1px solid var(--text-primary);
+            padding: 1rem 2.5rem;
+            border-radius: 100px;
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            margin-left: auto;
+        }
+
+        .btn-next:hover {
+            background: transparent;
+            color: var(--text-primary);
+        }
+
+        .btn-next:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .btn-next:disabled:hover {
+            background: var(--text-primary);
+            color: var(--bg-primary);
+        }
+
+        /* Confirmation Success */
+        .confirm-success {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .confirm-icon {
+            font-size: 5rem;
+            display: block;
+            margin-bottom: 2rem;
+            animation: popIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0); opacity: 0; }
+            to   { transform: scale(1); opacity: 1; }
+        }
+
+        .confirm-success h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .confirm-success p {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            max-width: 500px;
+            margin: 0 auto 2rem;
+        }
+
+        @media (max-width: 600px) {
+            .cal-day { font-size: 0.8rem; }
+            .calendar-wrapper { padding: 1.5rem; }
+            .progress-bar { gap: 0; }
+            .step-label { display: none; }
+        }
+    </style>
+
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Maple Leaf Green Clean">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://mapleleafgreenclean.com/booking.html">
+</head>
+<body>
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">
+                <img src="logo.png" alt="Maple Leaf Green Clean Logo" class="logo-img">
+            </a>
+            <div class="nav-links">
+                <a href="index.html#services">Services</a>
+                <a href="index.html#formula">About</a>
+                <a href="index.html#how-it-works">Process</a>
+                <a href="index.html#areas-served">Service Area</a>
+                <a href="faq.html">FAQ</a>
+                <a href="quote.html">Get a Quote</a>
+                <a href="booking.html" class="btn-primary">Book Online</a>
+                <button id="themeToggle" class="theme-btn" aria-label="Toggle Dark Mode">
+                    <span class="icon-light">☼</span>
+                    <span class="icon-dark">☾</span>
+                </button>
+            </div>
+            <button class="hamburger" aria-label="Open Menu">
+                <span class="line"></span>
+                <span class="line"></span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <header class="booking-header reveal">
+            <img src="mascot10.png" alt="Booking Mascot" class="booking-hero-mascot" style="width: 100%; max-width: 660px; height: auto; margin: 0 auto -1rem; display: block;" aria-hidden="true">
+            <h1>Book <i>Online</i></h1>
+            <p>Choose your service, pick a date and time, and confirm your booking in minutes.</p>
+            <p style="margin-top: 1rem; margin-bottom: 3rem; font-size: 1rem; color: var(--text-secondary);">Need help? Email <a href="mailto:hello@mapleleafgreenclean.com" style="color: var(--text-primary); text-decoration: underline; font-weight: 500;">hello@mapleleafgreenclean.com</a> or call <a href="tel:6048310998" style="color: var(--text-primary); text-decoration: underline; font-weight: 500;">(604) 831-0998</a></p>
+        </header>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar" id="progressBar">
+            <div class="progress-step active" data-step="1">
+                <div class="step-dot">1</div>
+                <span class="step-label">Service</span>
+            </div>
+            <div class="progress-step" data-step="2">
+                <div class="step-dot">2</div>
+                <span class="step-label">Date & Time</span>
+            </div>
+            <div class="progress-step" data-step="3">
+                <div class="step-dot">3</div>
+                <span class="step-label">Details</span>
+            </div>
+            <div class="progress-step" data-step="4">
+                <div class="step-dot">4</div>
+                <span class="step-label">Confirm</span>
+            </div>
+        </div>
+
+        <div class="booking-container">
+
+            <!-- Step 1: Select Service -->
+            <div class="booking-step active" id="step-1">
+                <h2 class="step-title">What service do you need?</h2>
+                <div class="service-options">
+                    <div class="service-option" data-service="Residential Cleaning" onclick="selectService(this)">
+                        <span class="service-check">✓</span>
+                        <span class="service-opt-icon">🏠</span>
+                        <span class="service-opt-name">Residential Cleaning</span>
+                        <span class="service-opt-desc">Routine housekeeping, deep cleans, move-in/out, and Airbnb turnovers.</span>
+                    </div>
+                    <div class="service-option" data-service="Commercial Cleaning" onclick="selectService(this)">
+                        <span class="service-check">✓</span>
+                        <span class="service-opt-icon">🏢</span>
+                        <span class="service-opt-name">Commercial Cleaning</span>
+                        <span class="service-opt-desc">Offices, retail, event cleanup, and sustainable janitorial services.</span>
+                    </div>
+                    <div class="service-option" data-service="Professional Organizing" onclick="selectService(this)">
+                        <span class="service-check">✓</span>
+                        <span class="service-opt-icon">📦</span>
+                        <span class="service-opt-name">Professional Organizing</span>
+                        <span class="service-opt-desc">Closets, pantries, garages, and whole-home decluttering sessions.</span>
+                    </div>
+                    <div class="service-option" data-service="Junk Cleanout &amp; Donation" onclick="selectService(this)">
+                        <span class="service-check">✓</span>
+                        <span class="service-opt-icon">♻️</span>
+                        <span class="service-opt-name">Junk Cleanout</span>
+                        <span class="service-opt-desc">Eco-friendly removal with delivery to local charities of your choice.</span>
+                    </div>
+                </div>
+                <div class="booking-nav">
+                    <button class="btn-next" id="next-1" onclick="goToStep(2)" disabled>Continue →</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Date & Time -->
+            <div class="booking-step" id="step-2">
+                <h2 class="step-title">When works for you?</h2>
+                <div class="calendar-wrapper">
+                    <div class="cal-header">
+                        <button class="cal-nav" id="prevMonth" onclick="changeMonth(-1)">‹</button>
+                        <span class="cal-month-label" id="calMonthLabel"></span>
+                        <button class="cal-nav" id="nextMonth" onclick="changeMonth(1)">›</button>
+                    </div>
+                    <div class="cal-grid" id="calGrid"></div>
+                </div>
+
+                <span class="time-slots-label" id="timeSlotsLabel" style="display:none;">Select a time</span>
+                <div class="time-slots" id="timeSlots"></div>
+
+                <div class="booking-nav">
+                    <button class="btn-back" onclick="goToStep(1)">← Back</button>
+                    <button class="btn-next" id="next-2" onclick="goToStep(3)" disabled>Continue →</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Personal Details -->
+            <div class="booking-step" id="step-3">
+                <h2 class="step-title">Your details</h2>
+                <form class="quote-form" onsubmit="return false;" style="margin:0;">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="b-name">Full Name</label>
+                            <input type="text" id="b-name" placeholder="Jane Doe" oninput="checkDetails()">
+                        </div>
+                        <div class="form-group">
+                            <label for="b-phone">Phone Number</label>
+                            <input type="tel" id="b-phone" placeholder="(604) 000-0000" oninput="checkDetails()">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="b-email">Email Address</label>
+                        <input type="email" id="b-email" placeholder="jane@example.com" oninput="checkDetails()">
+                    </div>
+                    <div class="form-group">
+                        <label for="b-address">Service Address</label>
+                        <input type="text" id="b-address" placeholder="123 Oak St, White Rock, BC" oninput="checkDetails()">
+                    </div>
+                    <div class="form-group">
+                        <label for="b-notes">Additional Notes (optional)</label>
+                        <textarea id="b-notes" rows="4" placeholder="Pets, access codes, special requirements..."></textarea>
+                    </div>
+                </form>
+                <div class="booking-nav">
+                    <button class="btn-back" onclick="goToStep(2)">← Back</button>
+                    <button class="btn-next" id="next-3" onclick="goToStep(4)" disabled>Review Booking →</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Confirm -->
+            <div class="booking-step" id="step-4">
+                <h2 class="step-title">Review & Confirm</h2>
+                <div class="summary-box">
+                    <div class="summary-row">
+                        <span class="summary-label">Service</span>
+                        <span class="summary-value" id="sum-service">—</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Date</span>
+                        <span class="summary-value" id="sum-date">—</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Time</span>
+                        <span class="summary-value" id="sum-time">—</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Name</span>
+                        <span class="summary-value" id="sum-name">—</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Email</span>
+                        <span class="summary-value" id="sum-email">—</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Address</span>
+                        <span class="summary-value" id="sum-address">—</span>
+                    </div>
+                </div>
+                <div class="booking-nav">
+                    <button class="btn-back" onclick="goToStep(3)">← Back</button>
+                    <button class="btn-next" onclick="confirmBooking()">Confirm Booking ✓</button>
+                </div>
+            </div>
+
+            <!-- Step 5: Success -->
+            <div class="booking-step" id="step-5">
+                <div class="confirm-success">
+                    <span class="confirm-icon">🌿</span>
+                    <h2>You're all booked!</h2>
+                    <p>A confirmation has been sent to <strong id="conf-email"></strong>. We'll see you on <strong id="conf-date"></strong>.</p>
+                    <a href="index.html" class="btn-primary large">Back to Home</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="index.html" class="footer-mascot-home" aria-label="Go to homepage">
+                    <img src="mascot2.png" alt="Go Home" class="footer-mascot-img" aria-hidden="true">
+                </a>
+                <div class="footer-brand-text">
+                    <h3>Maple Leaf Green Clean</h3>
+                    <p>Safe, reliable, and eco-friendly cleaning services for your home and business.</p>
+                </div>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <p><a href="tel:6048310998" style="color: inherit; text-decoration: none;">(604) 831-0998</a></p>
+                <p><a href="mailto:hello@mapleleafgreenclean.com" style="color: inherit; text-decoration: none;">hello@mapleleafgreenclean.com</a></p>
+                <p>Serving Metro Vancouver &amp; Fraser Valley, BC</p>
+            </div>
+            <div class="footer-links">
+                <div class="link-group">
+                    <h4>Services</h4>
+                    <a href="index.html#services">Residential</a>
+                    <a href="index.html#services">Commercial</a>
+                    <a href="index.html#services">Organizing</a>
+                    <a href="index.html#services">Junk Cleanout</a>
+                </div>
+                <div class="link-group">
+                    <h4>Areas</h4>
+                    <a href="index.html#areas-served">Metro Vancouver</a>
+                    <a href="index.html#areas-served">Fraser Valley</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="year"></span> Maple Leaf Green Clean. All rights reserved.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.8rem;"><a href="privacy.html" style="color: var(--text-secondary); text-decoration: underline;">Privacy Policy & GDPR</a></p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+        // ── Booking State ──
+        const state = {
+            service: null,
+            date: null,
+            time: null,
+        };
+
+        // ── Step Navigation ──
+        function goToStep(n) {
+            document.querySelectorAll('.booking-step').forEach(s => s.classList.remove('active'));
+            document.getElementById(`step-${n}`).classList.add('active');
+
+            document.querySelectorAll('.progress-step').forEach((el, i) => {
+                el.classList.remove('active', 'done');
+                if (i + 1 < n) el.classList.add('done');
+                if (i + 1 === n) el.classList.add('active');
+            });
+
+            if (n === 4) populateSummary();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ── Step 1: Service Selection ──
+        function selectService(el) {
+            document.querySelectorAll('.service-option').forEach(o => o.classList.remove('selected'));
+            el.classList.add('selected');
+            state.service = el.dataset.service;
+            document.getElementById('next-1').disabled = false;
+        }
+
+        // ── Step 2: Calendar ──
+        let calDate = new Date();
+        calDate.setDate(1);
+
+        const TIMES = ['8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM'];
+        const UNAVAILABLE = [1, 3]; // indices of unavailable slots
+
+        function renderCalendar() {
+            const now = new Date();
+            const year = calDate.getFullYear();
+            const month = calDate.getMonth();
+            const label = calDate.toLocaleString('default', { month: 'long', year: 'numeric' });
+            document.getElementById('calMonthLabel').textContent = label;
+
+            const grid = document.getElementById('calGrid');
+            grid.innerHTML = '';
+
+            ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].forEach(d => {
+                const el = document.createElement('div');
+                el.className = 'cal-day-name';
+                el.textContent = d;
+                grid.appendChild(el);
+            });
+
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            for (let i = 0; i < firstDay; i++) {
+                const blank = document.createElement('div');
+                blank.className = 'cal-day empty';
+                grid.appendChild(blank);
+            }
+
+            for (let d = 1; d <= daysInMonth; d++) {
+                const el = document.createElement('div');
+                el.className = 'cal-day';
+                el.textContent = d;
+
+                const thisDate = new Date(year, month, d);
+                const isPast = thisDate < new Date(now.getFullYear(), now.getMonth(), now.getDate());
+                const isToday = thisDate.toDateString() === now.toDateString();
+                const isSunday = thisDate.getDay() === 0;
+
+                if (isPast || isSunday) {
+                    el.classList.add('disabled');
+                } else {
+                    if (isToday) el.classList.add('today');
+                    if (state.date && state.date.toDateString() === thisDate.toDateString()) {
+                        el.classList.add('selected');
+                    }
+                    el.onclick = () => selectDate(thisDate, el);
+                }
+
+                grid.appendChild(el);
+            }
+
+            // Disable prev month nav if current month
+            document.getElementById('prevMonth').disabled =
+                year === now.getFullYear() && month === now.getMonth();
+        }
+
+        function changeMonth(dir) {
+            calDate.setMonth(calDate.getMonth() + dir);
+            state.date = null;
+            state.time = null;
+            document.getElementById('timeSlotsLabel').style.display = 'none';
+            document.getElementById('timeSlots').innerHTML = '';
+            document.getElementById('next-2').disabled = true;
+            renderCalendar();
+        }
+
+        function selectDate(date, el) {
+            document.querySelectorAll('.cal-day').forEach(d => d.classList.remove('selected'));
+            el.classList.add('selected');
+            state.date = date;
+            state.time = null;
+            document.getElementById('next-2').disabled = true;
+            renderTimeSlots();
+        }
+
+        function renderTimeSlots() {
+            const label = document.getElementById('timeSlotsLabel');
+            const container = document.getElementById('timeSlots');
+            label.style.display = 'block';
+            container.innerHTML = '';
+
+            TIMES.forEach((t, i) => {
+                const el = document.createElement('div');
+                el.className = 'time-slot' + (UNAVAILABLE.includes(i) ? ' unavailable' : '');
+                el.textContent = t;
+                if (!UNAVAILABLE.includes(i)) {
+                    el.onclick = () => selectTime(t, el);
+                }
+                container.appendChild(el);
+            });
+        }
+
+        function selectTime(time, el) {
+            document.querySelectorAll('.time-slot').forEach(t => t.classList.remove('selected'));
+            el.classList.add('selected');
+            state.time = time;
+            document.getElementById('next-2').disabled = false;
+        }
+
+        // ── Step 3: Details Validation ──
+        function checkDetails() {
+            const name = document.getElementById('b-name').value.trim();
+            const email = document.getElementById('b-email').value.trim();
+            const phone = document.getElementById('b-phone').value.trim();
+            const address = document.getElementById('b-address').value.trim();
+            document.getElementById('next-3').disabled = !(name && email && phone && address);
+        }
+
+        // ── Step 4: Summary ──
+        function populateSummary() {
+            const dateStr = state.date ? state.date.toLocaleDateString('en-CA', {
+                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+            }) : '—';
+            document.getElementById('sum-service').textContent = state.service || '—';
+            document.getElementById('sum-date').textContent = dateStr;
+            document.getElementById('sum-time').textContent = state.time || '—';
+            document.getElementById('sum-name').textContent = document.getElementById('b-name').value;
+            document.getElementById('sum-email').textContent = document.getElementById('b-email').value;
+            document.getElementById('sum-address').textContent = document.getElementById('b-address').value;
+        }
+
+        function confirmBooking() {
+            const dateStr = state.date ? state.date.toLocaleDateString('en-CA', {
+                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+            }) : '';
+
+            const customerName = document.getElementById('b-name').value;
+            const customerEmail = document.getElementById('b-email').value;
+            const customerPhone = document.getElementById('b-phone').value;
+            const customerAddress = document.getElementById('b-address').value;
+            const customerNotes = document.getElementById('b-notes').value;
+
+            // 1. Send booking notification to business
+            fetch("https://formsubmit.co/ajax/maplecleancan@gmail.com", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    Service: state.service,
+                    Date: dateStr,
+                    Time: state.time,
+                    Name: customerName,
+                    Email: customerEmail,
+                    Phone: customerPhone,
+                    Address: customerAddress,
+                    Notes: customerNotes,
+                    _subject: "New Booking Request!"
+                })
+            }).catch(error => console.log("Business email error", error));
+
+            // 2. Send confirmation email to the customer
+            fetch("https://formsubmit.co/ajax/" + customerEmail, {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    _subject: "Booking Confirmed — Maple Leaf Green Clean",
+                    _template: "box",
+                    "Booking Confirmation": "Hi " + customerName + ", your booking has been confirmed!",
+                    "Service": state.service,
+                    "Date": dateStr,
+                    "Time": state.time,
+                    "Address": customerAddress,
+                    "Notes": customerNotes || "None",
+                    "Next Steps": "Our team will reach out within 24 hours to finalize details. If you need to make changes, call (604) 831-0998 or email hello@mapleleafgreenclean.com.",
+                    "_replyto": "hello@mapleleafgreenclean.com"
+                })
+            }).catch(error => console.log("Customer email error", error));
+
+            document.getElementById('conf-email').textContent = customerEmail;
+            document.getElementById('conf-date').textContent = `${dateStr} at ${state.time}`;
+            goToStep(5);
+            document.querySelectorAll('.progress-step').forEach(el => el.classList.add('done'));
+        }
+
+        // ── Init ──
+        renderCalendar();
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

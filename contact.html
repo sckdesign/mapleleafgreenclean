@@ -3,14 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get a Quote | Maple Leaf Green Clean</title>
-    <meta name="description" content="Request a quote for premium, eco-friendly residential and commercial cleaning services.">
-    <link rel="stylesheet" href="styles.css">
-    
+    <title>Get a Quote | Eco-Friendly Cleaning Services in Surrey & Metro Vancouver</title>
+    <meta name="description" content="Request a free quote for premium, eco-friendly residential and commercial cleaning services. Serving Surrey, White Rock, Langley, and Metro Vancouver.">
+    <link rel="icon" type="image/png" href="mascot1.png">
+    <link rel="stylesheet" href="styles.css?v=2.6">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Maple Leaf Green Clean">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://mapleleafgreenclean.com/contact.html">
 </head>
 <body>
     <nav class="main-nav" id="mainNav">
@@ -18,11 +25,17 @@
             <a href="index.html" class="brand-logo">
                 <img src="logo.png" alt="Maple Leaf Green Clean Logo" class="logo-img">
             </a>
+            <a href="index.html" class="nav-mascot-home" aria-label="Go to homepage">
+                <img src="mascot2.png" alt="Home" class="nav-mascot-img" aria-hidden="true">
+            </a>
             <div class="nav-links">
                 <a href="index.html#services">Services</a>
-                <a href="index.html#formula">Our Formula</a>
+                <a href="index.html#formula">About</a>
                 <a href="index.html#how-it-works">Process</a>
-                <a href="contact.html" class="btn-primary">Get a Quote</a>
+                <a href="index.html#areas-served">Service Area</a>
+                <a href="faq.html">FAQ</a>
+                <a href="quote.html">Get a Quote</a>
+                <a href="booking.html" class="btn-primary">Book Online</a>
                 <button id="themeToggle" class="theme-btn" aria-label="Toggle Dark Mode">
                     <span class="icon-light">☼</span>
                     <span class="icon-dark">☾</span>
@@ -36,13 +49,14 @@
     </nav>
 
     <main>
-        <section class="contact-page-header reveal">
+        <section class="contact-page-header reveal" style="position: relative;">
             <h1>Get a Free Quote</h1>
             <p>Tell us about your home or business, and we'll provide a friendly, no-obligation estimate.</p>
         </section>
 
-        <section class="form-section reveal" style="padding: 0 var(--space-md) var(--space-xl);">
-            <form class="quote-form" action="#" method="POST" onsubmit="event.preventDefault(); alert('Thank you! Your quote request has been sent.');">
+        <section class="form-section reveal" style="padding: 0 var(--space-md) var(--space-xl); max-width: 900px; margin: 0 auto;">
+            <form class="quote-form" action="https://formsubmit.co/maplecleancan@gmail.com" method="POST" style="margin: 0; max-width: 100%;">
+                <input type="hidden" name="_subject" value="New Contact Request!">
                 <div class="form-group">
                     <label for="name">Full Name</label>
                     <input type="text" id="name" name="name" required placeholder="Jane Doe">
@@ -63,12 +77,13 @@
                         <option value="">Select a primary service...</option>
                         <option value="residential">Residential Cleaning</option>
                         <option value="commercial">Commercial Cleaning</option>
-                        <option value="organizing">Organizing & Decluttering</option>
+                        <option value="organizing">Organizing &amp; Decluttering</option>
+                        <option value="junk">Junk Cleanout &amp; Donation</option>
                         <option value="move">Move-In / Move-Out</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="details">Property Details & Specific Needs</label>
+                    <label for="details">Property Details &amp; Specific Needs</label>
                     <textarea id="details" name="details" rows="5" required placeholder="Approximate square footage, number of rooms, and any special eco-requirements..."></textarea>
                 </div>
                 <button type="submit" class="btn-primary large submit-btn">Submit Request</button>
@@ -79,9 +94,8 @@
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
-                <h3>Maple Leaf Green Clean</h3>
-                <p>Safe, reliable, and eco-friendly cleaning services for your home and business.</p>
-            </div>
+                <div class="footer-brand-text"><h3>Maple Leaf Green Clean</h3>
+                <p>Safe, reliable, and eco-friendly cleaning services for your home and business.</p></div></div>
             <div class="footer-contact">
                 <h4>Contact</h4>
                 <p>hello@mapleleafgreenclean.com</p>
@@ -97,6 +111,7 @@
         </div>
         <div class="footer-bottom">
             <p>&copy; <span id="year"></span> Maple Leaf Green Clean. All rights reserved.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.8rem;"><a href="privacy.html" style="color: var(--text-secondary); text-decoration: underline;">Privacy Policy & GDPR</a></p>
         </div>
     </footer>
 

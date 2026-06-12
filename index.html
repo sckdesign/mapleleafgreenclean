@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maple Leaf Green Clean | Eco-Friendly Cleaning in Metro Vancouver & the Fraser Valley</title>
-    <meta name="description" content="Professional eco-friendly cleaning services for homes and businesses across Metro Vancouver and the Fraser Valley. Non-toxic and safe for your family.">
+    <title>Eco-Friendly Home & Commercial Cleaning Services in Metro Vancouver | Maple Leaf Green Clean</title>
+    <meta name="description" content="Top-rated eco-friendly cleaning services for homes and commercial offices across Metro Vancouver, Surrey, and the Fraser Valley. 100% non-toxic, pet-safe, and family-friendly.">
     <link rel="canonical" href="https://mapleleafgreenclean.com/">
+    <link rel="icon" type="image/png" href="mascot1.png">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="Maple Leaf Green Clean">
-    <meta property="og:description" content="Eco-friendly residential cleaning serving Metro Vancouver & the Fraser Valley.">
+    <meta property="og:title" content="Eco-Friendly Home & Commercial Cleaning Services | Maple Leaf Green Clean">
+    <meta property="og:description" content="Premium green cleaning services serving Metro Vancouver, Surrey, & the Fraser Valley.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mapleleafgreenclean.com/">
 
@@ -18,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=2.8">
 
     <!-- JSON-LD LocalBusiness Schema -->
     <script type="application/ld+json">
@@ -31,34 +32,110 @@
       "url": "https://mapleleafgreenclean.com/",
       "telephone": "(604) 000-0000",
       "email": "hello@mapleleafgreenclean.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Surrey",
+        "addressRegion": "BC",
+        "addressCountry": "CA"
+      },
       "areaServed": [
+        { "@type": "City", "name": "Metro Vancouver" },
+        { "@type": "City", "name": "Surrey" },
+        { "@type": "City", "name": "White Rock" },
+        { "@type": "City", "name": "Langley" },
+        { "@type": "City", "name": "Fraser Valley" }
+      ],
+      "description": "Premium, eco-friendly residential and commercial cleaning services. We specialize in deep cleaning, move-in/move-out cleans, and office janitorial using zero-VOC natural products.",
+      "priceRange": "$$",
+      "makesOffer": [
         {
-          "@type": "City",
-          "name": "Metro Vancouver"
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Residential Green Cleaning"
+          }
         },
         {
-          "@type": "City",
-          "name": "Fraser Valley"
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Commercial Office Cleaning"
+          }
         }
       ],
-      "description": "Premium, eco-friendly residential cleaning services.",
-      "priceRange": "$$"
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "48"
+      }
     }
     </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Are your green cleaning products safe for cats and dogs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Every product we use is 100% pet-safe and non-toxic. Our plant-based formulas are biodegradable and leave no harmful residue on surfaces."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is included in a deep move-out clean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our move-out deep cleaning covers inside appliances, cabinets, baseboards, window ledges, bathrooms, closets, and all high-touch surfaces."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you bring your own eco-friendly cleaning supplies?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We arrive fully equipped with hand-crafted natural solutions, HEPA vacuums, and microfibre cloths. You provide nothing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are your cleaners bonded and insured?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Every cleaner is fully bonded, insured, and has passed a background check before entering your home."
+          }
+        }
+      ]
+    }
+    </script>
+
+
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Maple Leaf Green Clean">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://mapleleafgreenclean.com/">
 </head>
 <body>
     <nav class="main-nav" id="mainNav">
         <div class="nav-container">
-            <a href="#" class="brand-logo">
+            <a href="index.html" class="brand-logo">
                 <img src="logo.png" alt="Maple Leaf Green Clean Logo" class="logo-img">
             </a>
             <div class="nav-links">
                 <a href="index.html#services">Services</a>
                 <a href="index.html#formula">About</a>
                 <a href="index.html#how-it-works">Process</a>
-                <a href="contact.html" class="btn-primary">Get a Quote</a>
+                <a href="index.html#areas-served">Service Area</a>
+                <a href="faq.html">FAQ</a>
+                <a href="quote.html">Get a Quote</a>
+                <a href="booking.html" class="btn-primary">Book Online</a>
                 <button id="themeToggle" class="theme-btn" aria-label="Toggle Dark Mode">
-                    <span class="icon-light">☼</span>
+                    <span class="icon-light">☀</span>
                     <span class="icon-dark">☾</span>
                 </button>
             </div>
@@ -72,19 +149,28 @@
     <main>
         <!-- Hero Section -->
         <section id="hero" class="hero reveal">
-            <div class="hero-content">
-                <div class="hero-location">
-                    <span class="tag">Metro Vancouver</span>
-                    <span class="tag">Fraser Valley</span>
-                </div>
-                <h1 class="hero-title">Professional<br>Eco-Friendly<br><i>Cleaning Services</i></h1>
-                <p class="hero-subtitle">Safe, thorough, and reliable green cleaning for your home and business. Protect your family and the environment.</p>
-                <div class="hero-actions">
-                    <a href="contact.html" class="btn-primary large">Get an Estimate</a>
-                    <div class="trust-indicators">
-                        <span>✓ Eco-certified</span>
-                        <span>✓ Bonded & Insured</span>
+            <div class="split-layout hero-split">
+                <div class="hero-content">
+                    <div class="hero-location">
+                        <span class="tag">Metro Vancouver</span>
+                        <span class="tag">Fraser Valley</span>
                     </div>
+                    <h1 class="hero-title">Professional<br><span>Eco-Friendly</span><br><span><i>Cleaning Services</i></span></h1>
+                    <p class="hero-subtitle">Safe, thorough, and reliable green cleaning for your home and business. Protect your family and the environment.</p>
+                    <div class="hero-actions" style="margin-bottom: 2rem;">
+                        <a href="quote.html" class="btn-primary large">Get a Quote</a>
+                        <div class="trust-indicators">
+                            <span>✓ Eco-certified</span>
+                            <span>✓ Bonded &amp; Insured</span>
+                        </div>
+                    </div>
+                    <div style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.8;">
+                        <strong>Need it fast?</strong> Call us at <a href="tel:6048310998" style="color: var(--text-primary); text-decoration: none; font-weight: 700; border-bottom: 2px solid var(--clr-forest-light);">(604) 831-0998</a><br>
+                        Or email <a href="mailto:hello@mapleleafgreenclean.com" style="color: var(--text-primary); text-decoration: none; font-weight: 700; border-bottom: 2px solid var(--clr-forest-light);">hello@mapleleafgreenclean.com</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <img src="mascot1.png" alt="Maple Leaf Green Clean mascot character" class="full-mascot" aria-hidden="true">
                 </div>
             </div>
         </section>
@@ -92,61 +178,88 @@
         <!-- Trust Bar -->
         <section id="trust" class="trust-bar reveal">
             <div class="trust-item">
+                <img src="mascot6.png" alt="Earth-Safe Mascot" class="trust-bar-item-mascot" aria-hidden="true">
                 <h3>100% Earth-Safe</h3>
-                <p>Hand-crafted natural cleaners.</p>
+                <p>Every cleaner we use is hand-crafted from natural, plant-derived ingredients. No synthetic fragrances, no hidden toxins — just pure, effective cleaning power sourced from the earth.</p>
             </div>
             <div class="trust-item">
+                <img src="mascot19.png" alt="Zero VOCs Mascot" class="trust-bar-item-mascot" aria-hidden="true">
                 <h3>Zero VOCs</h3>
-                <p>Breathe easy immediately.</p>
+                <p>Volatile Organic Compounds in conventional cleaners are a leading cause of indoor air pollution. Our zero-VOC formulas mean you can breathe freely the moment we're done — no airing out required.</p>
             </div>
             <div class="trust-item">
-                <h3>Pet & Child Safe</h3>
-                <p>Gentle yet deeply effective.</p>
+                <img src="mascot20.png" alt="Pet-Safe Mascot" class="trust-bar-item-mascot" aria-hidden="true">
+                <h3>Pet &amp; Child Safe</h3>
+                <p>Formulated to meet the highest safety standards, our eco-friendly products are completely safe for babies crawling on freshly mopped floors, dogs licking paws after a clean, and everyone in between.</p>
             </div>
         </section>
 
         <!-- Services Section -->
         <section id="services" class="services reveal">
-            <div class="section-header">
-                <h2>What We Do</h2>
+            <div class="section-header text-center">
+                <img src="mascot13.png" alt="What We Do Mascot" style="width: 100%; max-width: 500px; height: auto; display: block; margin: 0 auto;" aria-hidden="true">
+                <h2 style="margin-top: 0;">What We Do</h2>
                 <p>Reliable and thorough cleaning tailored to your home or business.</p>
             </div>
-            <div class="service-category-grid">
-                <!-- Residential -->
-                <article class="service-card alt">
+            
+            <div class="service-block">
+                <div class="service-header">
                     <h3>Residential Cleaning</h3>
-                    <ul class="service-list">
-                        <li>Routine Housekeeping</li>
-                        <li>Deep Cleaning</li>
-                        <li>Move-In / Move-Out</li>
-                        <li>Airbnb Cleaning</li>
-                        <li>Green Laundry Care</li>
-                        <li>Appliance Cleaning (ovens, fridges)</li>
-                        <li>Carpet Spot Cleaning</li>
+                </div>
+                <div class="service-text-full">
+                    <p class="service-description">Our residential green cleaning services are meticulously designed to protect your sanctuary. We exclusively use 100% natural, zero-VOC cleaning products formulated in-house to eliminate dust, dander, and allergens without leaving toxic residues. From routine housekeeping to comprehensive deep cleaning, we ensure your home is a pristine, healthy environment perfectly tailored for your family and pets.</p>
+                    <ul class="service-list large-list">
+                        <li>Routine Housekeeping & Detail-Oriented Deep Cleaning</li>
+                        <li>Move-In / Move-Out Turnovers & Airbnb Servicing</li>
+                        <li>Green Laundry Care, Linen Changing & Appliance Cleaning</li>
+                        <li>Post-Renovation Dust Removal & Allergy Reduction</li>
                     </ul>
-                </article>
-                
-                <!-- Commercial -->
-                <article class="service-card">
-                    <h3>Commercial Cleaning</h3>
-                    <ul class="service-list">
-                        <li>Office Spaces</li>
-                        <li>Retail Environments</li>
-                        <li>Event Cleanup</li>
-                        <li>Common Area Maintenance</li>
-                        <li>Sustainable Janitorial Supplies</li>
-                    </ul>
-                </article>
+                </div>
+            </div>
 
-                <!-- Organizing -->
-                <article class="service-card alt">
-                    <h3>Professional Organizing<br><i>& Decluttering</i></h3>
-                    <ul class="service-list">
-                        <li>Closets & Wardrobes</li>
-                        <li>Kitchen Pantries</li>
-                        <li>Attic & Garage Sorts</li>
+            <div class="service-block alt-block">
+                <div class="service-header">
+                    <h3>Commercial Cleaning</h3>
+                </div>
+                <div class="service-text-full">
+                    <p class="service-description">Elevate your professional space with our premium commercial office cleaning services. We understand that a clean, toxin-free workplace directly boosts employee morale, enhances productivity, and significantly reduces sick days. We provide highly flexible, after-hours janitorial services specifically tailored to corporate offices, retail environments, and sensitive medical facilities, utilizing sustainable practices.</p>
+                    <ul class="service-list large-list">
+                        <li>Office Spaces, Retail Environments & Showrooms</li>
+                        <li>Event Cleanup & Daily Common Area Maintenance</li>
+                        <li>Sustainable Janitorial Supplies & Waste Management</li>
+                        <li>High-Touch Surface Sanitization & Air Quality Focus</li>
                     </ul>
-                </article>
+                </div>
+            </div>
+
+            <div class="service-block">
+                <div class="service-header">
+                    <h3>Professional Organizing<br><i>& Decluttering</i></h3>
+                </div>
+                <div class="service-text-full">
+                    <p class="service-description">Transform chaotic, stressful spaces into beautifully structured, calming environments. Our professional decluttering experts help you regain total control of your home by implementing smart, sustainable organizational systems that actually last. Whether it’s overhauling a cluttered master closet, optimizing a kitchen pantry, or clearing a packed garage, we bring intentional order to every project.</p>
+                    <ul class="service-list large-list">
+                        <li>Closets, Wardrobes & Personal Styling Spaces</li>
+                        <li>Kitchen Pantries, Cabinets & Culinary Workspaces</li>
+                        <li>Attic, Basement & Comprehensive Garage Sorts</li>
+                        <li>Digital Decluttering & Home Office Optimization</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-block alt-block">
+                <div class="service-header">
+                    <h3>Junk Cleanout<br><i>& Charitable Donation</i></h3>
+                </div>
+                <div class="service-text-full">
+                    <p class="service-description">Clear out unwanted items responsibly and with a clean conscience. We offer professional, heavy-duty junk cleanout services to completely declutter your home or office without the guilt. Instead of mindlessly sending usable goods to the landfill, our dedicated team will sort, pack, and transport your items to local charities, ensuring they find a second home.</p>
+                    <ul class="service-list large-list">
+                        <li>Eco-Friendly Sorting, Packing & Item Categorization</li>
+                        <li>Direct Delivery to Local Charities of Your Choice</li>
+                        <li>Responsible Electronics Recycling & Landfill Diversion</li>
+                        <li>Ethical Disposal of Hazardous Household Materials</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
@@ -156,6 +269,7 @@
                 <div class="formula-text">
                     <h2>The Maple Leaf<br><i>Difference</i></h2>
                     <p>We create our own highly effective, all-natural cleaning solutions right here. Because we mix them ourselves using eco-friendly products, we know exactly what goes into them—meaning they are 100% safe for your entire family, including pets, while remaining incredibly tough on dirt.</p>
+                    <p>Living in the damp Pacific Northwest means dealing with unique challenges like persistent mold and mildew. Commercial bleach and ammonia can severely degrade indoor air quality, which is why our formulas harness the power of natural anti-microbials, essential oils, and plant-based surfactants. You get a hospital-grade clean without the headache-inducing chemical fumes.</p>
                     <ul class="benefit-list">
                         <li>Safe for children and pets to crawl and play on.</li>
                         <li>No harsh chemicals, zero toxins, and completely biodegradable.</li>
@@ -163,45 +277,62 @@
                     </ul>
                 </div>
                 <div class="formula-visual">
-                    <img src="logo.png" alt="Maple Leaf Green Clean Mascot" class="featured-logo">
+                    <img src="logo.png" alt="Maple Leaf Green Clean Logo" class="featured-logo">
                 </div>
             </div>
         </section>
 
         <!-- How It Works Section -->
         <section id="how-it-works" class="process reveal">
-            <div class="section-header text-center">
-                <h2>How It Works</h2>
-            </div>
-            <div class="process-steps">
-                <div class="step">
-                    <span class="step-num">01</span>
-                    <h3>Consultation</h3>
-                    <p>We assess your space and define your specific needs.</p>
+            <div class="process-inner">
+                <div class="section-header text-center">
+                    <h2>How It Works</h2>
+                    <p>A seamless, four-step green clean experience from first contact to lasting results.</p>
                 </div>
-                <div class="step">
-                    <span class="step-num">02</span>
-                    <h3>Custom Plan</h3>
-                    <p>A tailored eco-cleaning strategy is formulated.</p>
-                </div>
-                <div class="step">
-                    <span class="step-num">03</span>
-                    <h3>Execution</h3>
-                    <p>Our meticulous team transforms your environment.</p>
-                </div>
-                <div class="step">
-                    <span class="step-num">04</span>
-                    <h3>Maintenance</h3>
-                    <p>Enjoy a continuously pristine, healthy home.</p>
+                <div class="process-steps-row">
+                    <div class="step">
+                        <img src="mascot7.png" alt="Consultation Mascot" class="full-mascot step-mascot-large" aria-hidden="true">
+                        <span class="step-num">01</span>
+                        <h3>Consultation</h3>
+                        <p>We assess your space and define your specific needs.</p>
+                    </div>
+                    <div class="step-divider"></div>
+                    <div class="step">
+                        <img src="mascot24.png" alt="Custom Plan Mascot" class="full-mascot step-mascot-large" aria-hidden="true">
+                        <span class="step-num">02</span>
+                        <h3>Custom Plan</h3>
+                        <p>A tailored eco-cleaning strategy is formulated just for you.</p>
+                    </div>
+                    <div class="step-divider"></div>
+                    <div class="step">
+                        <img src="mascot25.png" alt="Execution Mascot" class="full-mascot step-mascot-large" aria-hidden="true">
+                        <span class="step-num">03</span>
+                        <h3>Execution</h3>
+                        <p>Our meticulous team transforms your space using natural products.</p>
+                    </div>
+                    <div class="step-divider"></div>
+                    <div class="step">
+                        <img src="mascot26.png" alt="Maintenance Mascot" class="full-mascot step-mascot-large" aria-hidden="true">
+                        <span class="step-num">04</span>
+                        <h3>Maintenance</h3>
+                        <p>Enjoy a continuously pristine, healthy home or office.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Areas Served -->
         <section id="areas-served" class="areas reveal">
+            
+            <div class="areas-hero-mascot">
+                <img src="mascot12.png" alt="Mascot 12" class="areas-mascot-img" aria-hidden="true">
+            </div>
+
             <div class="areas-content">
-                <h2>Our Service Area</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 3rem; font-size: 1.1rem;">Proudly serving Canadian communities within a 20-mile radius of South Surrey / White Rock.</p>
+                <h2 class="text-center">Service Area</h2>
+                <p class="text-center areas-subtitle">Proudly serving Canadian communities within a 20-kilometre radius of South Surrey / White Rock.</p>
+                <p class="text-center areas-lead">Whether you're searching for a <strong>green cleaning service in Surrey</strong>, a <strong>non-toxic home cleaner in White Rock</strong>, or a reliable <strong>eco-friendly office cleaning company in Langley</strong>, Maple Leaf Green Clean is your trusted local choice. Our team of insured, background-checked cleaning professionals serves families and businesses across the entire Lower Mainland and Fraser Valley. We pride ourselves on punctuality, attention to detail, and leaving every space healthier than we found it. Same-day and next-day bookings are available for most areas.</p>
+                
                 <div class="map-and-locations">
                     <div class="neighbourhoods">
                         <div class="city-col">
@@ -254,26 +385,106 @@
             </div>
         </section>
 
-        <!-- Testimonials -->
+        <!-- Testimonials Carousel -->
         <section id="testimonials" class="testimonials reveal">
-            <div class="testimonial-grid">
-                <div class="review">
-                    <div class="stars">★★★★★</div>
-                    <p>"The eco-formula smells incredible. My home has never felt so clean, and I don't have to worry about my dog walking on harsh chemicals."</p>
-                    <span class="author">— Sarah M., Ocean Park</span>
+            <div class="section-header text-center">
+                <h2>What Our Clients Say</h2>
+                <p>Real reviews from real families across Metro Vancouver.</p>
+            </div>
+
+            <div class="carousel-outer">
+                <button class="carousel-btn carousel-prev" id="prevBtn" aria-label="Previous reviews">&#8592;</button>
+
+                <div class="carousel-viewport" id="carouselViewport">
+                    <div class="carousel-track" id="carouselTrack">
+
+                        <div class="review-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"The eco-formula smells incredible. My home has never felt so clean."</p>
+                            <span class="author">— Sarah M., Ocean Park</span>
+                        </div>
+
+                        <div class="review-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"Maple Leaf Green Clean is on another level. The attention to detail was astounding."</p>
+                            <span class="author">— James L., Morgan Creek</span>
+                        </div>
+
+                        <div class="review-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"Professional, punctual, and truly green. They've completely changed my standard."</p>
+                            <span class="author">— Emily R., White Rock</span>
+                        </div>
+
+                        <div class="review-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"We switched from a conventional cleaner and the difference is night and day. No more chemical smell — just fresh, clean air."</p>
+                            <span class="author">— Linda T., Cloverdale</span>
+                        </div>
+
+                        <div class="review-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"They organized my entire pantry and kitchen in one afternoon. I didn't know my home could look like this."</p>
+                            <span class="author">— Priya N., Fleetwood</span>
+                        </div>
+
+                        <div class="review-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"Move-out clean was flawless. Got my full deposit back and my landlord was stunned."</p>
+                            <span class="author">— Marcus W., New Westminster</span>
+                        </div>
+
+                        <div class="review-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"I have two cats and was worried about residue on the floors. Zero concerns with these products. Absolutely pet-safe."</p>
+                            <span class="author">— Diane K., Tsawwassen</span>
+                        </div>
+
+                        <div class="review-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"Our office smells amazing and my team actually noticed a difference in air quality. Highly recommend for commercial spaces."</p>
+                            <span class="author">— Kevin H., Langley City</span>
+                        </div>
+
+                        <div class="review-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"Booking was effortless and they showed up exactly on time. The deep clean took our Airbnb from 4.6 to 5.0 stars."</p>
+                            <span class="author">— Natasha B., South Surrey</span>
+                        </div>
+
+                        <div class="review-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"Worth every penny. My allergies have been so much better since we started monthly deep cleans."</p>
+                            <span class="author">— Chris O., Port Moody</span>
+                        </div>
+
+                        <div class="review-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"They handled a post-renovation cleanup that I thought was impossible. Every speck of dust — gone."</p>
+                            <span class="author">— Aisha F., Burnaby</span>
+                        </div>
+
+                        <div class="review-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"The team is warm, efficient, and incredibly thorough. Our home feels like a luxury hotel after every visit."</p>
+                            <span class="author">— Robert & Yuki S., White Rock</span>
+                        </div>
+
+                    </div>
                 </div>
-                <div class="review">
-                    <div class="stars">★★★★★</div>
-                    <p>"Maple Leaf Green Clean is on another level. The attention to detail during our move-in clean was astounding."</p>
-                    <span class="author">— James L., Morgan Creek</span>
-                </div>
-                <div class="review">
-                    <div class="stars">★★★★★</div>
-                    <p>"Professional, punctual, and truly green. They've completely changed my standard for cleaning services."</p>
-                    <span class="author">— Emily R., White Rock</span>
-                </div>
+
+                <button class="carousel-btn carousel-next" id="nextBtn" aria-label="Next reviews">&#8594;</button>
+            </div>
+
+            <div class="carousel-dots" id="carouselDots"></div>
+
+            <div class="testimonial-mascots">
+                <img src="mascot16.png" alt="Happy Mascot" aria-hidden="true">
+                <img src="mascot17.png" alt="Happy Mascot" aria-hidden="true">
+                <img src="mascot18.png" alt="Happy Mascot" aria-hidden="true">
             </div>
         </section>
+
 
         <!-- CTA / Contact -->
         <section id="contact" class="cta reveal">
@@ -281,21 +492,28 @@
                 <h2>Get Your Free Quote Today</h2>
                 <p>Contact our friendly team to book your home or office cleaning.</p>
                 <div class="contact-methods">
-                    <a href="contact.html" class="btn-primary large" style="color: var(--bg-primary); border-color: var(--bg-primary);">Fill Out Quote Form</a>
+                    <a href="quote.html" class="btn-primary large btn-cta-inverse">Fill Out Quote Form</a>
                 </div>
             </div>
         </section>
+
     </main>
 
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
-                <h3>Maple Leaf Green Clean</h3>
-                <p>Safe, reliable, and eco-friendly cleaning services for your home and business.</p>
+                <a href="index.html" class="footer-mascot-home" aria-label="Go to homepage">
+                    <img src="mascot2.png" alt="Go Home" class="footer-mascot-img" aria-hidden="true">
+                </a>
+                <div class="footer-brand-text">
+                    <h3>Maple Leaf Green Clean</h3>
+                    <p>Safe, reliable, and eco-friendly cleaning services for your home and business.</p>
+                </div>
             </div>
             <div class="footer-contact">
                 <h4>Contact</h4>
-                <p>hello@mapleleafgreenclean.com</p>
+                <p><a href="tel:6048310998" style="color: inherit; text-decoration: none;">(604) 831-0998</a></p>
+                <p><a href="mailto:hello@mapleleafgreenclean.com" style="color: inherit; text-decoration: none;">hello@mapleleafgreenclean.com</a></p>
                 <p>Serving Metro Vancouver & Fraser Valley, BC</p>
             </div>
             <div class="footer-links">
@@ -304,6 +522,7 @@
                     <a href="#services">Residential</a>
                     <a href="#services">Commercial</a>
                     <a href="#services">Organizing</a>
+                    <a href="#services">Junk Cleanout</a>
                 </div>
                 <div class="link-group">
                     <h4>Areas</h4>
@@ -314,6 +533,7 @@
         </div>
         <div class="footer-bottom">
             <p>&copy; <span id="year"></span> Maple Leaf Green Clean. All rights reserved.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.8rem;"><a href="privacy.html" style="color: var(--text-secondary); text-decoration: underline;">Privacy Policy & GDPR</a></p>
         </div>
     </footer>
 
